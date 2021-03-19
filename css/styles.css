@@ -86,7 +86,7 @@ p.font {
 .sidebar1 {
   width: 22%;
   margin: auto;
-  margin-top: 0px;
+  margin-top: -30px;
   float:right;
   padding-left: 0px;
 }
@@ -96,7 +96,7 @@ p.font {
   text-decoration: wavy;
   font-family: cursive;
   border-radius: 50%;
-  background-color: #06d6a0;
+  background-color: #5cefff;
 }
 .text {
   text-align: center;
@@ -139,7 +139,7 @@ p.font {
 }
 .black {
   font-family: fantasy;
-  color: black;
+  color: #5cefff;
   text-align: left;
 }
 .white {
