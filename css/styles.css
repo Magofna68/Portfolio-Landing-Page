@@ -1,7 +1,7 @@
 .font {
   text-align: center;
   font-family: Georgia;
-  background: #AEB4A9;
+  background: #8e9aaf;
 }
 .font1 {
   text-align: center;
@@ -11,11 +11,10 @@
   font: bold;
 }
 ul.font1 {
-  text-align: left;
+  text-align: center;
   font-family: fantasy;
-  color: white;
+  color: #06d6a0;
   background: #6c757d;
-  }
 }
 h1.font {
   text-align: center;
@@ -33,6 +32,7 @@ p.font {
   width: 50%;
   height: auto;
   padding-right: 2%;
+  margin-top: 4px;
 }
 .centered {
   text-align: center;
@@ -58,7 +58,8 @@ p.font {
   border-color: #AEB4A9;
   margin: right;
   margin-right: 3%;
-  padding: 20px;
+  margin-bottom: 5%;
+  padding: 10px;
   float: right;
   font-family: cursive;
   background: gray;
@@ -90,6 +91,8 @@ p.font {
   color: black;
   text-decoration: wavy;
   font-family: cursive;
+  border-radius: 50%;
+  background-color: #06d6a0;
 }
 .text {
   text-align: center;
@@ -105,11 +108,11 @@ p.font {
   font: bold;
 }
 .box3 {
-  width: 24%;
-  margin:auto;
+  width: 20%;
   margin-top: 10px;
   margin-bottom: 10px;
-  margin-left: 2px;
+  margin-left: 3%;
+  margin-right: 2%;
   float: left;
   border-style: dotted;
   border-color: #06d6a0;
@@ -117,13 +120,24 @@ p.font {
   background: #343a40;
 }
 .box4 {
-  width: 24%;
-  margin:auto;
+  width: 20%;
   margin-top: 10px;
   margin-bottom: 10px;
-  margin-left: 2px;
-  float: right;
+  margin-left: 2%;
+  margin-right: 3%;
+  float: left;
   border-style: dotted;
   border-color: #06d6a0;
   box-sizing: border-box;
   background: #343a40;
+}
+.black {
+  font-family: fantasy;
+  color: black;
+  text-align: center;
+}
+.white {
+  font-family: fantasy;
+  color: white;
+  text-align: center;
+}
