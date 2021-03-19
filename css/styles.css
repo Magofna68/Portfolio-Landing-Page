@@ -3,6 +3,20 @@
   font-family: Georgia;
   background: #AEB4A9;
 }
+.font1 {
+  text-align: center;
+  font-family: fantasy;
+  color: black;
+  background: #6c757d;
+  font: bold;
+}
+ul.font1 {
+  text-align: left;
+  font-family: fantasy;
+  color: white;
+  background: #6c757d;
+  }
+}
 h1.font {
   text-align: center;
   font-family: Georgia;
@@ -52,9 +66,8 @@ p.font {
 }
 .h3 {
   font: bolder;
-  font-style: italic;
+  font-family: fantasy;
   display: block;
-  font: bold;
   color: black;
   background: #06d6a0;
   text-align: center;
@@ -91,3 +104,26 @@ p.font {
   display: block;
   font: bold;
 }
+.box3 {
+  width: 24%;
+  margin:auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 2px;
+  float: left;
+  border-style: dotted;
+  border-color: #06d6a0;
+  box-sizing: border-box;
+  background: #343a40;
+}
+.box4 {
+  width: 24%;
+  margin:auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 2px;
+  float: right;
+  border-style: dotted;
+  border-color: #06d6a0;
+  box-sizing: border-box;
+  background: #343a40;
