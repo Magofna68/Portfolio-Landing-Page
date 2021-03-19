@@ -27,6 +27,7 @@ p.font {
   font-family: Georgia;
   background:#6d6875;
   color: white;
+  border-radius: 50%;
 }
 .centered1 {
   float: left;
@@ -63,8 +64,9 @@ p.font {
   padding: 10px;
   float: right;
   font-family: cursive;
-  background: gray;
+  background-color: gray;
   color: white;
+  border-radius: 5%;
 }
 .h3 {
   font: bolder;
@@ -73,6 +75,7 @@ p.font {
   color: black;
   background: #06d6a0;
   text-align: center;
+  border-radius: 50%;
 }
 .sidebar {
   width: 22%;
@@ -143,4 +146,10 @@ p.font {
   font-family: fantasy;
   color: white;
   text-align: center;
+}
+.black1 {
+  font-family: fantasy;
+  color: black;
+  text-align: center;
+  background: #b1a7a6;
 }
