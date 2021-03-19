@@ -113,7 +113,7 @@ p.font {
 }
 .box3 {
   width: 20%;
-  margin-top: 10px;
+  margin-top: 15px;
   margin-bottom: 10px;
   margin-left: 3%;
   margin-right: 2%;
@@ -126,7 +126,7 @@ p.font {
 }
 .box4 {
   width: 20%;
-  margin-top: 10px;
+  margin-top: 15px;
   margin-bottom: 10px;
   margin-left: 2%;
   margin-right: 3%;
@@ -152,4 +152,10 @@ p.font {
   color: black;
   text-align: center;
   background: #b1a7a6;
+}
+.yes {
+  border-radius: 10%;
+  background: #343a40;
+  color: #b1a7a6;
+  text-align: center;
 }
