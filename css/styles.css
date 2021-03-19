@@ -8,10 +8,17 @@ h1.font {
   font-family: Georgia;
   background:#a8dadc;
 }
+p.font {
+  text-align: center;
+  font-family: Georgia;
+  background:#6d6875;
+  color: white;
+}
 .centered1 {
   float: left;
   width: 50%;
   height: auto;
+  padding-right: 2%;
 }
 .centered {
   text-align: center;
@@ -49,8 +56,9 @@ h1.font {
 .sidebar1 {
   width: 22%;
   margin: auto;
+  margin-top: 0px;
   float:right;
-  padding-left: 5px;
+  padding-left: 0px;
 }
 .bold {
   text-align: center;
@@ -64,8 +72,10 @@ h1.font {
   padding-left: 10px;
   padding-bottom: 10px;
   margin-left: 2%;
+  font-size: large;
 }
 .important {
   font-style: italic;
   display: block;
+  font: bold;
 }
