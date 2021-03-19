@@ -2,6 +2,7 @@
   text-align: center;
   font-family: Georgia;
   background: #8e9aaf;
+  margin-top: 0px;
 }
 .font1 {
   text-align: center;
@@ -158,4 +159,8 @@ p.font {
   background: #343a40;
   color: #b1a7a6;
   text-align: center;
+}
+.shrink {
+  font-size: smaller;
+  font-family: Georgia;
 }
