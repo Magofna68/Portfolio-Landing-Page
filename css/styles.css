@@ -46,6 +46,18 @@ p.font {
   margin-right: 3%;
   padding: 20px;
   float: right;
+  font-family: cursive;
+  background: gray;
+  color: white;
+}
+.h3 {
+  font: bolder;
+  font-style: italic;
+  display: block;
+  font: bold;
+  color: black;
+  background: #06d6a0;
+  text-align: center;
 }
 .sidebar {
   width: 22%;
