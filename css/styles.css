@@ -9,9 +9,10 @@
   color: black;
   background: #6c757d;
   font: bold;
+  border-radius: 60%;
 }
 ul.font1 {
-  text-align: center;
+  text-align: left;
   font-family: fantasy;
   color: #06d6a0;
   background: #6c757d;
@@ -118,6 +119,7 @@ p.font {
   border-color: #06d6a0;
   box-sizing: border-box;
   background: #343a40;
+  border-radius: 20%
 }
 .box4 {
   width: 20%;
@@ -130,11 +132,12 @@ p.font {
   border-color: #06d6a0;
   box-sizing: border-box;
   background: #343a40;
+  border-radius: 20%
 }
 .black {
   font-family: fantasy;
   color: black;
-  text-align: center;
+  text-align: left;
 }
 .white {
   font-family: fantasy;
