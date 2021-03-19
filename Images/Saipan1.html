@@ -1,0 +1,548 @@
+<!DOCTYPE HTML>
+<html lang="en-us">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Google Map of Saipan, Northern Mariana Islands - Nations Online Project</title>
+<meta name="Description" content="Searchable map/satellite view of the island of Saipan, Northern Mariana Islands.">
+<meta name="Keywords" content="Searchable map of Saipan, Northern Mariana Islands, Rota, Tinian, Google Map of Saipan, Latitude, Longitude, interactive Map of Saipan">
+<meta name="subject" content="Saipan - Map">
+<meta name="author" content="klaus kästle">
+<meta name="publisher" content="nationsonline.org">
+<meta name="robots" content="index,follow">
+<meta name="revisit-after" content="99 days">
+<link rel="stylesheet" type="text/css" href="/oneworld/CSS/gmap-mini.css">
+<link rel="stylesheet" type="text/css" href="/oneworld/CSS/menu.css">
+<style type="text/css">
+iframe.noScrolling {width: 336px;
+height: 27px;
+overflow: hidden; 
+border:hidden;
+}
+</style>
+<script src="https://maps.googleapis.com/maps/api/js?key=&amp;libraries=geometry,places"></script>
+<script>
+	function initialize() {
+
+  var mapOptions = {
+    center: new google.maps.LatLng(15.19, 145.77),
+    zoom: 12,
+    mapTypeId: google.maps.MapTypeId.HYBRID,
+	streetViewControl:true,
+	scrollwheel: false,
+	zoomControl:true,
+	zoomControlOptions: {
+	style:google.maps.ZoomControlStyle.SMALL
+	}
+
+  };
+  var map = new google.maps.Map(document.getElementById('Saipan_Map'),
+    mapOptions);
+
+			var planeImage = new google.maps.MarkerImage("../../symbols/new-marker-plane.png", 
+			new google.maps.Size(37,37),
+			new google.maps.Point(0,0)
+			);
+
+			var smplaneImage = new google.maps.MarkerImage("../../symbols/small-plane.png", 
+			new google.maps.Size(27,27),
+			new google.maps.Point(0,0)
+			);
+	
+			var pinImage = new google.maps.MarkerImage("../../buttons/new_marker_blue.png", 
+			new google.maps.Size(18,30),
+			new google.maps.Point(0,0)
+			);
+			
+			
+			//MARKER 1
+			var myMarker1 = new google.maps.Marker({
+      		position: new google.maps.LatLng(15.1214, 145.7347),
+      		map: map,
+      		icon: planeImage,
+	  		title: 'Saipan International Airport' });
+
+			var infowindow1 = new google.maps.InfoWindow({
+			content:"<h3>Saipan International Airport</h3><p>Saipan's airport is also known as Francisco C. Ada International Airport (<a href='../airport_code.htm'>IATA code</a>: SPN), it is the gateway to the CNMI, serving Saipan, Rota and Tinian.<br>Travelers at the  airport now have an opportunity to see how ancient Chamorros lived by the installation of a traditional hut on display.</p>", 
+		    maxWidth: 240 });
+			
+			google.maps.event.addListener(myMarker1, 'click', function() {
+			infowindow1.open(map,myMarker1);
+			});  
+  
+
+
+			//MARKER 2
+ 			var myMarker2 = new google.maps.Marker({
+      		position: new google.maps.LatLng(14.1718, 145.2438),
+      		map: map,
+      		icon: smplaneImage,
+	  		title: 'Rota International Airport' });
+ 
+			var infowindow2 = new google.maps.InfoWindow({ 
+			content:"<h3>Rota International Airport</h3><p>Rota Airport (<a href='../airport_code.htm'>IATA code</a>: ROP) is located on the island of Rota, NMI, with inter-island passenger traffic to Saipan, and <a href=\"../guam.htm\">Guam</a></p>", 
+		    maxWidth: 240 });
+
+			google.maps.event.addListener(myMarker2, 'click', function() {
+			infowindow2.open(map,myMarker2); 
+			});
+
+		//MARKER 3
+
+			var myMarker3 = new google.maps.Marker({
+      		position: new google.maps.LatLng(14.99835, 145.62685),
+      		map: map,
+      		icon: smplaneImage,
+	  		title: 'Tinian International Airport' });
+ 
+			var infowindow3 = new google.maps.InfoWindow({
+			content:"<h3>Tinian Airport</h3><p>known as West Tinian Airport (<a href='../airport_code.htm'>IATA code</a>: TIQ), located on Tinian Island. THe airport's passenger traffic is from inter-island travels from Saipan, Rota and Guam, it accommodates single engine aircrafts and is used by air taxis and for general aviation.</p>", 
+		    maxWidth: 240 });
+
+			google.maps.event.addListener(myMarker3, 'click', function() {
+			infowindow3.open(map,myMarker3);
+			});  
+
+
+        //  center change update lat and lon
+        google.maps.event.addListener(map, 'center_changed', function () {
+            var location = map.getCenter();
+            document.getElementById("lat").innerHTML = location.lat();
+            document.getElementById("lon").innerHTML = location.lng();
+        	});
+
+  var input = /** @type {HTMLInputElement} */(document.getElementById('searchTextField'));
+  var autocomplete = new google.maps.places.Autocomplete(input);
+
+  autocomplete.bindTo('bounds', map);
+
+  var infowindow = new google.maps.InfoWindow();
+  var marker = new google.maps.Marker({
+    map: map
+  });
+
+  google.maps.event.addListener(autocomplete, 'place_changed', function() {
+    infowindow.close();
+    marker.setVisible(false);
+    input.className = '';
+    var place = autocomplete.getPlace();
+    if (!place.geometry) {
+
+      input.className = 'notfound';
+      return;
+    }
+
+    if (place.geometry.viewport) {
+      map.fitBounds(place.geometry.viewport);
+    } else {
+      map.setCenter(place.geometry.location);
+      map.setZoom(13);
+    }
+    marker.setIcon(/** @type {google.maps.Icon} */({
+      url: place.icon,
+      size: new google.maps.Size(71, 71),
+      origin: new google.maps.Point(0, 0),
+      anchor: new google.maps.Point(17, 34),
+      scaledSize: new google.maps.Size(35, 35)
+    }));
+    marker.setPosition(place.geometry.location);
+    marker.setVisible(true);
+
+    var address = '';
+    if (place.address_components) {
+      address = [
+        (place.address_components[0] && place.address_components[0].short_name || ''),
+        (place.address_components[1] && place.address_components[1].short_name || ''),
+        (place.address_components[2] && place.address_components[2].short_name || '')
+      ].join(' ');
+    }
+
+    infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
+    infowindow.open(map, marker);
+  });
+
+}
+			
+google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-202810-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+<script type="text/javascript">
+    window.cookieconsent_options = {"message":"This website uses cookies to ensure you get the best experience on our website","dismiss":"Got it!","learnMore":"More info","link":"https://www.nationsonline.org/oneworld/disclaimer.htm","theme":"dark-top"};
+</script>
+<script type="text/javascript" src="/oneworld/Script/cookieconsent.js"></script>
+
+</head>
+<body>
+<table class="nix">
+<tr>
+<td colspan="2">&nbsp;</td>
+</tr>
+<tr><td class="ad730" style="padding-top:9px">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-7193398479241689" data-ad-slot="1304854140"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></td><td class="logotd"><div itemscope itemtype="http://schema.org/Organization">
+<meta itemprop="name" content="Nations Online Project">
+<a itemprop="url" href="https://www.nationsonline.org/">
+<img itemprop="logo" src="/buttons/OWNO_logo06-60.png" width="60" height="60" alt="Nations Online Logo" class="displayed"></a></div>
+<span style="font-size: 81%;"><b>One Planet<br>Nations Online</b></span><br>
+<span style="font-size: 63%;">All Countries in the World<br>
+&nbsp;</span></td></tr></table>
+<div id="ownoDiv1">
+<div id="wrap">
+<div style="z-index:999; position:relative;">
+<ul id="ownomenu">
+ <li class="ownolink">
+<a href="../../index.html">Home</a>
+</li>
+<li class="ownolink">
+<a href="/oneworld/continents.htm">Continents</a>
+<ul>
+<li><a href="/oneworld/africa.htm">Africa</a></li>
+<li><a href="/oneworld/america.htm">The Americas</a></li>
+<li><a href="/oneworld/asia.htm">Asia</a></li>
+<li><a href="/oneworld/europe.htm">Europe</a></li>
+<li><a href="/oneworld/oceania.htm">Oceania/Australia</a></li>
+</ul>
+</li>
+<li class="ownolink">
+<a href="/oneworld/countries.html">Countries</a>
+<ul>
+<li><a href="/oneworld/countries_of_the_world.htm">Countries A to Z</a></li>
+<li><a href="/oneworld/states.htm">Sovereign States</a></li>
+<li><a href="/oneworld/territories.htm">Dependent Areas</a></li>
+<li><a href="/oneworld/countries_by_area.htm">Countries by Area</a></li>
+<li><a href="/oneworld/population-by-country.htm">Country Population</a></li>
+<li><a href="/oneworld/island-countries.htm">Island Countries</a></li>
+<li><a href="/oneworld/human_development.htm">Human Development Index</a></li>
+<li><a href="/oneworld/corruption.htm">Countries by Corruption</a></li>
+<li><a href="/oneworld/press_freedom.htm">Countries and Press Freedom</a></li>
+<li><a href="/oneworld/flags.html">Country Flags</a></li>
+<li><a href="/oneworld/currencies.htm">Int'l Currencies</a></li>
+</ul>
+</li>
+<li class="ownolink">
+<a href="/oneworld/cities.htm">Cities</a>
+<ul>
+<li><a href="/oneworld/bigcities.htm">Megacities</a></li>
+<li><a href="/oneworld/famous-cities.htm">Famous Cities</a></li>
+<li><a href="/oneworld/capitals_africa.htm">Capital Cities Africa</a></li>
+<li><a href="/oneworld/capitals_america.htm">Capital Cities Americas</a></li>
+<li><a href="/oneworld/capitals_asia.htm">Capital Cities Asia</a></li>
+<li><a href="/oneworld/capitals_australia.htm">Capital Cities Australia</a></li>
+<li><a href="/oneworld/capitals_europe.htm">Capital Cities Europe</a></li>
+<li><a href="/oneworld/capitals-usa.htm">US Capital Cities</a></li>
+<li><a href="/oneworld/most_pop_cities_usa.htm">Largest US cities</a></li>
+<li><a href="/oneworld/airlines.html">Airports and Airlines</a></li>
+</ul>
+</li>
+<li class="ownolink">
+<a href="/oneworld/most_famous_landmarks.htm">Landmarks</a>
+<ul>
+<li><a href="/oneworld/most_famous_landmarks2.htm">City Icons</a></li>
+<li><a href="/oneworld/most_famous_landmarks3.htm">Places of Power</a></li>
+<li><a href="/oneworld/most_famous_landmarks4.htm">Sacred Mountains</a></li>
+</ul>
+</li>
+<li class="ownolink">
+<a href="/oneworld/languages.htm">Languages</a>
+<ul>
+<li><a href="/oneworld/countries_by_languages.htm">Languages by countries</a></li>
+<li><a href="/oneworld/language_code.htm">Language codes</a></li>
+<li><a href="/oneworld/most_spoken_languages.htm">Most spoken Languages</a></li>
+</ul>
+</li>
+<li class="ownolink">
+<a href="/oneworld/maps.htm">Maps</a>
+<ul>
+<li><a href="/oneworld/map/index.htm">Maps by Country</a></li>
+<li><a href="/oneworld/us_states_maps.htm">Maps of US States</a></li>
+</ul>
+</li>
+<li class="ownolink">
+<a href="/oneworld/codes.html">International</a>
+<ul>
+<li><a href="/oneworld/news.html">International News</a></li>
+<li><a href="/oneworld/countrycodes.htm">Country Codes</a></li>
+<li><a href="/oneworld/international-calling-codes.htm">Int. Calling Codes</a></li>
+<li><a href="/oneworld/currencies.htm">Currency Codes</a></li>
+<li><a href="/oneworld/airport_code.htm">Airport Codes</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<p style="height:16px"></p>
+<table class="tb86">
+<tr>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td class="menubar"><img src="../../gallery/Northern_Marianas/Northern-Mariana-Islands-Flag-wave.jpg" alt="Northern Mariana Islands Flag detail" width="855" height="40" title="Northern Mariana Islands Flag detail" /></td>
+</tr>
+<tr>
+<td class="menubar"><a href="../first.shtml">Home</a> <img src="../../buttons/pfeil_r.gif" width="6" height="8" alt="">
+<a href="../continents.htm">Continents</a> <img src="../../buttons/pfeil_r.gif" width="6" height="8" alt="">
+<a href="../oceania.htm">Australia/Oceania</a> <img src="../../buttons/pfeil_r.gif" width="6" height="8" alt="">
+<a href="../northern_mariana_islands.htm">Northern Mariana Islands Profile</a> <img src="../../buttons/pfeil_r.gif" width="6" height="8" alt="">
+<i>Google Earth Saipan Map</i> <br>
+<br>
+<img src="../../buttons/h_dark_blue.gif" alt="" style="margin-top:9px;margin-bottom:9px; width:855px; height:2px;"></td>
+</tr>
+<tr>
+<td>
+<h1>___ Satellite View and Map of the Island of Saipan, Northern Mariana Islands</h1>
+</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td><img src="../../gallery/Northern_Marianas/Bird-island-Saipan.jpg" width="855" height="267" alt="Bird island, Saipan, Northern Mariana Islands" /><br>
+<span class="caption">Bird Island Sanctuary, one of the Marine Protected Areas of Saipan, Northern Mariana Islands.</span><br>
+<span class="profil">Image: E. Alfabeth</span></td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+</tr>
+</table>
+<table class="tb86">
+<tr>
+<td colspan="2">
+<h2>About Saipan</h2>
+Satellite view is showing Saipan, the largest island and capital of the United States Commonwealth of <img src="../../buttons/pfeil_r.gif" width="6" height="8" alt=""> <a href="../northern_mariana_islands.htm">Northern Mariana Islands</a> (CNMI). Saipan and neighboring Tinian are located about 2,670 km east of Manila, in the Philippines, 6000 km (3700 mi) west of <a href="google_map_Honolulu.htm">Honolulu</a>, <a href="google_map_Hawaii.htm">Hawaii</a>, and about 200 km (125 mi) north east of <a href="../guam.htm">Guam</a> in the western Pacific Ocean.<br>
+<br>
+<div class="img-right" style="width:432px"><img src="../../gallery/Northern_Marianas/Northern-Marianas-Islands-Museum.jpg" width="432" height="303" alt="Saipan island, CNMI"><br>
+<span class="caption">Northern Marianas Islands Museum.</span><br>
+<span class="profil">Image: Abasaa</span></div>
+The Northern Marianas with the three main islands of Saipan, Tinian and Rota, are part of the Marianas, Saipan is the second largest island in the Mariana archipelago, after Guam.<br>
+<br>
+The main islands of the CNMI consists of limestone with fringing coral reefs, some islands to the north, like Anatahan, Pagan and Agrihan are of volcanic origin. Agrihan island is a massive stratovolcano rising from the seafloor, and with 965 m (3,166 ft) above sea level, the highest point in the archipelago and in Micronesia. <br>
+<br>
+52,000 people live in the CNMI (in 2016), about 19,000 are <em>Chamorro</em>, indigenous Austronesian people, who assumably came from Taiwan and/or the southern coast of China and settled the islands 4000 years ago. <br>
+<br>
+There are no real cities on the islands, largest urban center on Saipan is <strong>Garapan</strong>, a town with all the facilities for tourists and citizens, it is the capital of the Northern Marianas. <br>
+The waters of the island's reef-lined beaches of the densely populated western and southern coast are popular for diving and snorkeling.<br>
+<br>
+<strong>Some points of interest in Saipan:</strong><br>
+<strong>Bird Island</strong>, the marine protected area; <strong>Blue Grotto</strong>, hiking and diving highlight; <strong>Banzai Cliff</strong>, a historic site at the northern tip of the island; <strong>Forbidden Island</strong>, a bird sanctuary occupied by unfriendly spirits; <strong>Mount Tapochau</strong>, highest point in Saipan; <strong>Mañagaha Island</strong>, islet with a lagoon and sandy beaches, tourists can happily disturb the peace of nature by snorkeling, parasailing and jet skiing.<br>
+<br>
+The map shows an island map of Saipan with cities, towns, main roads and streets, <strong>Saipan International Airport</strong> (<a href="../airport_code.htm">IATA code</a>: SPN) is located in the south of the island. <br>
+Zoom out to find the locations of West Tinian Airport (<a href="../airport_code.htm">IATA code</a>: TIQ) and Rota International Airport (<a href="../airport_code.htm">IATA code</a>: ROP), located on Rota island, about 111 km (69 mi) south west from Saipan.<br>
+<br>
+To find a location use the form below. To view just the map, click on the &quot;Map&quot; button.<br>&nbsp;
+</td>
+</tr>
+<tr>
+<td style="width:423px"> To find a location type: street or place, city, <em>optional:</em> state, country.<br>
+<br>
+<div id="panel" style="border: solid; border-color:#BDCEE7; width:386px">
+<input id="searchTextField" type="text" size="54">
+</div></td><td>Local Time Northern Mariana Islands:
+<div id="date">
+Thursday-March-18 &nbsp;19:17
+&nbsp;</div>UTC/GMT +10 hours</td>
+</tr>
+</table>
+<table class="tb86">
+<tr>
+<td colspan="3">
+<div id="Saipan_Map" style="width: 855px; height: 603px"></div>
+φ Latitude, λ Longitude (of Map center; move the map to see coordinates): <br>
+<span id="lat"> </span>, <span id="lon"> </span><br>
+&nbsp;
+</td>
+</tr>
+<tr>
+<td colspan="2"> <span class="topic">Sorry!</span> Google's pricing policy has made it impossible for us to continue showing Google Maps. We apologize for any inconvenience.<br>
+<br>
+<strong>Google Map: Searchable Map of the island of Saipan, Northern Mariana Islands.</strong><br>
+&nbsp;</td>
+<td><span class="profil">Bookmark/share this page</span><br>
+<div>
+<iframe class="noScrolling" src="//www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.nationsonline.org%2F&amp;colorscheme=light&amp;layout=standard&amp;action=like&amp;show_faces=false&amp;send=true&amp;appId=281471825201783" style="border:none; overflow:hidden;"></iframe>
+</div>
+
+<div class="g-plusone"></div>
+
+<script>
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
+<div><script src="https://www.reddit.com/static/button/button1.js"></script></div>
+
+<div class="addthis_toolbox addthis_default_style"><a class="addthis_button_facebook_like"></a> <a class="addthis_button_tweet"></a> <a class="addthis_button_pinterest_pinit"></a> <a class="addthis_counter addthis_pill_style"></a></div>
+<a href="https://www.instagram.com/nationsonline/?ref=badge" class="ig-b- ig-b-32"><img src="//badges.instagram.com/static/images/ig-badge-32.png" alt="Instagram" /></a>
+<script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=worldnations" async="async">
+</script> 
+<br>
+<br>
+
+<form action="https://www.nationsonline.org/oneworld/searchresults.htm" id="cse-search-box">
+<div>
+<input type="hidden" name="cx" value="partner-pub-7193398479241689:6876591797">
+<input type="hidden" name="cof" value="FORID:10">
+<input type="hidden" name="ie" value="UTF-8">
+<input type="text" name="q" size="27">
+<input type="submit" name="sa" value="Search">
+</div>
+</form>
+<script src="https://www.google.com/coop/cse/brand?form=cse-search-box&amp;lang=en"></script>
+</td>
+</tr>
+<tr>
+<td colspan="3">Coordinates: 15°10′51″N 145°45′21″E<br>φ Latitude °N, λ Longitude °E
+</td>
+</tr>
+<tr>
+<td class="moreab"><strong>More about Northern Mariana Islands:</strong><br>
+<br>
+<span class="profil">Island territory:</span><br>
+<img src="../../buttons/pfeil_r.gif" width="6" height="8" alt=""> <a href="google_map_northern_mariana.htm">Searchable map and satellite view of Northern Mariana Islands</a><br><br>
+<img src="../../buttons/pfeil_r.gif" width="6" height="8" alt=""> <a href="../northern_mariana_islands.htm">Northern Mariana Islands Profile</a><br>
+<br>
+<span class="profil">Country:</span><br>
+<img src="../../buttons/pfeil_r.gif" width="6" height="8" alt=""> <a href="../united_states.htm">United States Profile</a><br>
+<br>
+<span class="profil">Continent:</span> <br>
+<img src="../../buttons/pfeil_r.gif" width="6" height="8" alt=""> <a href="micronesia_map.htm">Map of Micronesia</a><br>
+<img src="../../buttons/pfeil_r.gif" width="6" height="8" alt=""> <a href="oceania_map.htm">Map of Oceania</a><br>
+<img src="../../buttons/pfeil_r.gif" width="6" height="8" alt=""> <a href="../flags_of_australia_oceania.htm">Flags of Oceania</a><br>
+<img src="../../buttons/pfeil_r.gif" width="6" height="8" alt=""> <a href="../oceania_languages.htm">Languages of Oceania</a><br>
+<br>
+<span class="profil">External Links:</span><br>
+<a href="http://www.mymarianas.com/" rel="nofollow" target="_top">Marianas Visitors Authority</a><br>
+<br>
+<a href="http://www.saipanportal.com/" rel="nofollow" target="_top">Saipan</a> (Saipan portal) <br>
+<br>
+<a href="http://www.cpa.gov.mp/spnapt.asp" rel="nofollow" target="_top">Commonwealth Ports Authority Saipan Airport</a><br>
+<br>
+<a href="https://en.wikipedia.org/wiki/Saipan" rel="nofollow" target="_top">Wikipedia: Saipan</a><br>
+&nbsp;</td><td class="weather"><strong>Current Weather Conditions Saipan</strong><br>
+<br>
+<br>
+
+<table style="width: 271px; border: 1px solid #999;"><tr><td colspan="2"><div style="height: 35px;"><a href="https://www.wunderground.com/global/stations/91231.html?bannertypeclick=htmlSticker"><img src="http://banners.wunderground.com/weathersticker/htmlSticker1/language/www/global/stations/91231.gif" alt="" height="35" width="271"></a></div></td></tr><tr><td style="vertical-align: top;"><div style="width: 101px;"><div style="height: 22px;"></div><div style="font-family: Geneva, Arial, Helvetica, sans-serif; font-size: 10px; text-align: left;"><div style="padding-left: 10px;"><a href="https://www.wunderground.com/global/stations/91231.html?bannertypeclick=htmlSticker">Detailed Forecast</a></div><div style="height: 12px;"></div></div><form action="https://www.wunderground.com/cgi-bin/findweather/getForecast" method="get" target="_blank" style="margin-top: 10px; margin-bottom: 0px; text-align: center;"><input type="hidden" name="bannertypeclick" value="htmlSticker"><div><input name="query" type="text" value="Find Weather" onFocus="this.value=''" style="width: 85px;"></div><div style="padding-top: 5px;"><input name="GO" type="submit" value="GO" style="width: 50px; background-color: #008; color: #FFF; font-size: 12px; font-weight: bold; border-top: 1px solid #CCC; border-left: 1px solid #CCC; border-right: 1px solid #000; border-bottom: 1px solid #000;"></div></form></div></td><td style="vertical-align: top;"><div style="height: 139px;"><a href="https://www.wunderground.com/global/stations/91231.html?bannertypeclick=htmlSticker"><img src="http://banners.wunderground.com/weathersticker/htmlSticker2_cond/language/www/global/stations/91231.gif" alt="" height="139" width="170"></a></div></td></tr></table>
+
+<br>
+<br>
+</td>
+<td class="ad340"><strong>Related Consumer Information</strong>:<br>
+<p style="float:right;width:336px; height:280px">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<ins class="adsbygoogle" style="display:inline-block;width:336px;height:280px" data-ad-client="ca-pub-7193398479241689" data-ad-slot="8554088592"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p></td>
+</tr>
+<tr>
+<td align="center" style="background-color:#BDCEE7" colspan="3"><br>
+Other Micronesian Island Nations:<br>
+<a href="../guam.htm">Guam</a>, <a href="../countries_usa.htm#Hawaii">Hawaii</a>, <a href="../kiribati.htm">Kiribati</a>, <a href="../marshall_islands.htm">Marshall
+Islands</a>, <a href="../micronesia.htm">Micronesia (Federated States of)</a>, <a href="../nauru.htm">Nauru</a>, <a href="../palau.htm">Palau</a> <br>
+&nbsp;</td>
+</tr>
+<tr>
+<td colspan="3" class="profil"><br>
+<strong>Map Help</strong> <a onclick="showme('intel');" id="oneworld">[ show ]</a><div id="intel" style="display:none;"><table>
+<tr>
+<td><a id="MapHelp"></a></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td><img class="displayed" src="/buttons/new-pan-button.gif" alt="map pan button" title="map pan button" width="54" height="54"><br></td>
+<td><span class="profil">to pan the map click on the respective arrow on the pan button or click on the map and move your mouse/pointer to drag the map around (pan).</span></td>
+</tr>
+<tr>
+<td><img src="/buttons/zoom.gif" alt="zoom" title="zoom in, zoom out button" width="19" height="38" class="displayed"></td>
+<td><span class="profil"> to <strong>Zoom</strong> in +, or Zoom out – use the zoom buttons; or double click on the map to zoom in. </span></td>
+</tr>
+<tr>
+<td style="vertical-align:top"><img src="../../buttons/control-button.gif" width="92" height="19" alt="map control buttons"></td>
+<td><span class="profil"><strong>Map Type Control Buttons</strong>; <br>
+To switch between various map types click on this buttons:</span><br>
+&nbsp;</td>
+</tr>
+<tr>
+<td><img src="../../buttons/terrain-button.gif" width="92" height="44" alt="terrain button" title="map/terrain button"><br>
+&nbsp;</td>
+<td><span class="profil">Click the <strong>Map</strong> button for a street map, this button holds the option for <br>
+<strong>Terrain</strong>, it displays a physical map with topographical details.<br>
+<br>
+</span></td>
+</tr>
+<tr>
+<td><img src="../../buttons/Labels.gif" width="93" height="44" alt="Labes button" title="Satellite/Labes button"><br>
+&nbsp;</td>
+<td><span class="profil">Click the <strong>Satellite</strong> for a satellite image; <br>
+with the option to switch <strong>Labels</strong> (names, borders, roads, business, etc.) on and off, for a combination of satellite image and street map.</span></td>
+</tr>
+<tr>
+<td><img src="../../buttons/Pegman.gif" width="20" height="38" alt="Pegman" title="Pegman symbol" class="displayed"></td>
+<td><span class="profil">The &quot;Pegman&quot; symbol offers the switch to Google's street view, the 360-degree, panoramic street-level imagery. <br>
+To enjoy street views, grab pegman with your cursor and hoover over the map, when street view is available parts of the map will change to blue, drop pegman there and you might have a lot of fun within unimaginable boring landscapes. <br>&nbsp;</span></td>
+</tr>
+</table>
+</div> <img src="../../buttons/h_dark_blue.gif" alt="" style="margin-top:9px;margin-bottom:9px; width:855px; height:2px;"></td>
+</tr>
+</table>
+<script src="/oneworld/Script/showme.js"></script>
+<table class="nix">
+<tr>
+<td class="footer"><br>
+<b>One World - Nations Online .:. let's care for <a href="/oneworld/earth.htm">this planet</a></b><br>
+<br>
+Promote that every nation assumes responsibility for our world.<br>
+<br>
+Nations Online Project is made to improve cross-cultural understanding and global awareness.<br />
+More <strong>signal</strong> - less <em style="color:#CCCCCC">NOISE</em>
+<br>&nbsp;</td>
+</tr>
+<tr>
+<td class="footer"><a href="/oneworld/sitemap.htm">Site Map</a>
+| <a href="/oneworld/information_sources.html">Information Sources</a> | <a href="/oneworld/disclaimer.htm">Disclaimer</a> | Copyright &copy; 1998-2021 <b>::</b> <a href="https://www.nationsonline.org/">nationsonline.org</a><br>
+<img src="https://www.nationsonline.org/xdigits/2.gif" width="20" height="27" alt=" "><img src="https://www.nationsonline.org/xdigits/0.gif" width="20" height="27" alt=" "><img src="https://www.nationsonline.org/xdigits/5.gif" width="20" height="27" alt=" "><img src="https://www.nationsonline.org/xdigits/3.gif" width="20" height="27" alt=" "><img src="https://www.nationsonline.org/xdigits/3.gif" width="20" height="27" alt=" "><img src="https://www.nationsonline.org/xdigits/2.gif" width="20" height="27" alt=" "><img src="https://www.nationsonline.org/xdigits/8.gif" width="20" height="27" alt=" "><img src="https://www.nationsonline.org/xdigits/8.gif" width="20" height="27" alt=" "><img src="https://www.nationsonline.org/xdigits/9.gif" width="20" height="27" alt=" "></td>
+</tr>
+</table>
+&nbsp;
+<div class="up"><a title="go top of page" href="#top"><img src="/buttons/up-weiss.gif" width="20" height="16" alt="up"></a></div>
+<script src="../Script/jquery.js"></script>
+<script>
+	$(document).ready(function() {
+		// Show or hide the sticky footer button
+		$(window).scroll(function() {
+			if ($(this).scrollTop() > 250) {
+				$('.up').fadeIn(100);
+			} else {
+				$('.up').fadeOut(100);
+			}
+		});
+		
+		// Animate the scroll to top
+		$('.up').click(function(event) {
+			event.preventDefault();
+			
+			$('html, body').animate({scrollTop: 0}, 300);
+		})
+	});
+</script>
+</body>
+</html>

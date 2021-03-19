@@ -1,32 +1,31 @@
 # _Brandon's Landing Page_
 
-#### _{To showcase and illustrate my coding abilities_
+#### _To showcase and illustrate my coding abilities!_
 
-#### By _**All preceding work completed by Brandon Magofna**_
+#### _All preceding work completed by **Brandon Magofna**_
 
-## Technologies Used
+## Technologies Used:
 
 * CSS
 * HTML
 * VS Code
 
 
-## Description
+## Description:
 
-_{This is my project portfolio containing the workings completed in 2021 at Epicodus BootCamp}_
+_This is my project portfolio containing the workings completed in 2021 at Epicodus BootCamp_
 
-## Setup/Installation Requirements
+## Setup/Installation Requirements:
 
 * Click on link provided below
 * Open in browser
 
 
-_{Leave nothing to chance! You want it to be easy for potential users, employers and collaborators to run your app. Do I need to run a server? How should I set up my databases? Is there other code this application depends on? We recommend deleting the project from your desktop, re-cloning the project from GitHub, and writing down all the steps necessary to get the project working again.}_
+_{If link is broken, go to github.com/Magofna68/Portfolio-Landing-Page to view repository and access content}_
 
 ## Known Bugs
 
 * _No known bugs at this time_
-* __
 
 ## License
 
@@ -34,5 +33,6 @@ _MIT lisence 2021 Epicodus_
 
 ## Contact Information
 
-_{Brandon Magofna}_
-_{P: 503-269-2656 -- EM: Magofna68@gmail.com}
+### Brandon Magofna
+
+_Cell: 503-269-2656 -- EM: Magofna68@gmail.com_
