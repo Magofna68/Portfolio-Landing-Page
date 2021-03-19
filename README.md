@@ -17,8 +17,8 @@ _This is my project portfolio containing the workings completed in 2021 at Epico
 
 ## Setup/Installation Requirements:
 
-* Click on link provided below
-* Open in browser
+* Click on link provided [here](https://github.com/Magofna68/Portfolio-Landing-Page.git) to access GitHub Repository
+* Link should open in browser
 
 
 _{If link is broken, go to github.com/Magofna68/Portfolio-Landing-Page to view repository and access content}_
