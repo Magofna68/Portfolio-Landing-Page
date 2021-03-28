@@ -19,7 +19,7 @@ _This is my project portfolio containing the workings completed in 2021 at Epico
 
 If below link isnt working; the backup method will be cloning repository to local repository and openning from local device:
 
-* _Go to Github and navigate to main page of repository you wish to clone (ie Portfolio Landing Page)_
+* _Go to Github and navigate to main page of repository you wish to clone (i.e. Portfolio Landing Page)_
 * _Above the list of files, click the green "code" button, and select the clipboard to copy URL under "clone with https"_
 * _Open terminal & change current working directory to "Desktop" - this will house the cloned repository_
 * _Once there, type in and enter "git clone (remote URL address from GitHub) in terminal_
